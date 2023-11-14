@@ -1,9 +1,15 @@
+# deploy.yml
+
+# workflow name
 name: D-Scrumble
 
+# workflow event trigger
+#   push, pull request
+#   branch: main, dev
 on:
   push:
     branches:
-      - main  
+      - main
       - dev
   pull_request:
     branches:
@@ -11,36 +17,53 @@ on:
       - dev
 
 jobs:
+  # job: test
   test:
+    # runner, version
     runs-on: ubuntu-latest
+
+    # env warning message 방지 (vscode-github-actions/issues/222)
+    env:
+      STORE_PATH:
+
     steps:
+      # Github Action checkout
       - uses: actions/checkout@v3
 
+      # Node.js 18 설치
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
+      # pnpm 8 설치
       - uses: pnpm/action-setup@v2
         with:
           version: 8
 
+      # pnpm의 저장소 디렉토리 경로를 설정
       - name: Get pnpm store directory
         run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
+      # pnpm의 저장소 캐시 설정
+      #   path: 캐싱할 디렉토리 지정
+      #   key: 캐싱된 데이터를 식별하는 키 지정
+      #   restore-keys: 캐싱된 데이터를 복원할 때 사용할 키 지정
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
         with:
           path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-
+      
+      # front 디렉토리에 의존성 설치
       - name: Install dependencies
         run: |
           cd front
           pnpm install
-
+      
+      # test 실행
       - name: Run Tests
         run: |
           cd front
