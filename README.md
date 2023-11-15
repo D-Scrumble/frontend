@@ -29,7 +29,8 @@ D-Scrumble
 2. [Concepts](#concepts)
 3. [View](#view)
 4. [Bug Reports](#bug-reports)
-5. [License](#license)
+5. [Convention](#convention)
+6. [License](#license)
 
 <h2 align="center">Install</h2>
 
@@ -113,6 +114,28 @@ pnpm run dev
 <h2 align="center" id="bug-reports">Bug Reports</h2>
 
 제 블로그 [Problem Drilling](https://nami-socket.tistory.com/category/Problem%20Drilling) 카테고리에서 확인하실 수 있습니다.
+
+<h2 align="center" id="convention">Convention</h2>
+
+<h3>Branch naming Pattern</h3>
+
+[Label](https://github.com/D-Scrumble/frontend/labels) 과 **Jira에 설정된 프로젝트 명(DSB) + 티켓 번호**로 구성
+
+- 각 PR에 첨부된 티켓 링크로 Jira 티켓을 확인할 수 있습니다.
+- 예시: chore/DSB-10, docs/DSB-11
+
+**Label**
+
+| 라벨     | 설명                                      |
+| -------- | ----------------------------------------- |
+| chore    | Modify the build process, package manager |
+| docs     | Edit the document                         |
+| feat     | Add new features                          |
+| fix      | Debugging                                 |
+| refactor | Refactoring                               |
+| style    | Code Formatting                           |
+| test     | Add test code                             |
+| view     | User Interface                            |
 
 <h2 align="center" id="license">License</h2>
 
