@@ -1,6 +1,6 @@
 import "./styles/createPost.css";
 
-const CreatePost = () => {
+function CreatePost() {
   return (
     <button className="nav__post">
       <svg
@@ -22,6 +22,6 @@ const CreatePost = () => {
       스크럼블 만들기
     </button>
   );
-};
+}
 
 export default CreatePost;
