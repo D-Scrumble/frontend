@@ -1,0 +1,13 @@
+.slogan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  background-color: lemonchiffon;
+}
+
+.slogan__text {
+  color: #ff8a00;
+  font-family: Permanent Marker;
+  font-size: 3rem;
+}
