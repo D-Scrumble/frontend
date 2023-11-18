@@ -3,3 +3,9 @@
   height: 300px;
   background-color: antiquewhite;
 }
+
+@media (max-width: 768px) {
+  .slider {
+    height: 200px;
+  }
+}

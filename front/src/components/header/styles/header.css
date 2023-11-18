@@ -14,3 +14,14 @@
   width: 280px;
   padding-right: 20px;
 }
+
+@media (max-width: 768px) {
+  .header {
+    height: 80px;
+  }
+  .nav {
+    justify-content: end;
+    width: 100px;
+    padding-right: 10px;
+  }
+}
